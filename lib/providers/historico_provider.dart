@@ -2,9 +2,11 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class HistoricoProvider with ChangeNotifier {
-  final String _baseUrl = 'https://backend-condoview.onrender.com';
+  final String _baseUrl = dotenv.env['BASE_URL'] ?? 'http://10.0.1.3:5000';
+
   List<dynamic> _avisos = [];
   List<dynamic> _assembleias = [];
   Timer? _pollingTimer;

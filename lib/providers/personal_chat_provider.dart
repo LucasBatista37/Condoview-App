@@ -3,9 +3,10 @@ import 'package:condoview/models/personal_chat_message_model.dart';
 import 'package:condoview/services/secure_storege_service.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class PersonalChatProvider with ChangeNotifier {
-  final String _baseUrl = 'https://backend-condoview.onrender.com';
+  final String _baseUrl = dotenv.env['BASE_URL'] ?? 'http://10.0.1.3:5000';
 
   List<PersonalChatMessageModel> _messages = [];
   final SecureStorageService _secureStorageService = SecureStorageService();
@@ -16,7 +17,8 @@ class PersonalChatProvider with ChangeNotifier {
     try {
       final token = await _secureStorageService.loadToken();
       if (token == null) {
-        throw Exception("Token não encontrado. O usuário não está autenticado.");
+        throw Exception(
+            "Token não encontrado. O usuário não está autenticado.");
       }
 
       final url = Uri.parse('$_baseUrl/api/users/personal-chat/$userId');
@@ -63,7 +65,8 @@ class PersonalChatProvider with ChangeNotifier {
     try {
       final token = await _secureStorageService.loadToken();
       if (token == null) {
-        throw Exception("Token não encontrado. O usuário não está autenticado.");
+        throw Exception(
+            "Token não encontrado. O usuário não está autenticado.");
       }
 
       var request = http.MultipartRequest('POST', url);
@@ -88,8 +91,8 @@ class PersonalChatProvider with ChangeNotifier {
         final respStr = await response.stream.bytesToString();
         final jsonResponse = json.decode(respStr);
 
-        final newMessage = PersonalChatMessageModel.fromJson(
-            jsonResponse, currentUserId);
+        final newMessage =
+            PersonalChatMessageModel.fromJson(jsonResponse, currentUserId);
 
         _messages.add(newMessage);
         notifyListeners();

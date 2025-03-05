@@ -19,9 +19,12 @@ import 'package:provider/provider.dart';
 import 'package:condoview/screens/administrador/avisos/adicionar_avisos_screen.dart';
 import 'package:condoview/screens/morador/home/home_screen.dart';
 import 'package:condoview/screens/morador/search/search_screen.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await dotenv.load(fileName: ".env");
 
   runApp(
     MultiProvider(

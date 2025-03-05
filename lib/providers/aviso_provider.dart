@@ -5,9 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:condoview/models/aviso_model.dart';
 import 'package:logger/logger.dart';
 import 'package:condoview/services/secure_storege_service.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class AvisoProvider with ChangeNotifier {
-  final String baseUrl = 'https://backend-condoview.onrender.com';
+  final String _baseUrl = dotenv.env['BASE_URL'] ?? 'http://10.0.1.3:5000';
+
   List<Aviso> _avisos = [];
   Timer? _pollingTimer;
 
@@ -17,7 +19,7 @@ class AvisoProvider with ChangeNotifier {
   List<Aviso> get avisos => _avisos;
 
   Future<void> addAviso(Aviso aviso) async {
-    final url = Uri.parse('$baseUrl/api/users/admin/notices');
+    final url = Uri.parse('$_baseUrl/api/users/admin/notices');
 
     final requestBody = {
       'title': aviso.title,
@@ -71,7 +73,7 @@ class AvisoProvider with ChangeNotifier {
   }
 
   Future<void> fetchAvisos() async {
-    final url = Uri.parse('$baseUrl/api/users/admin/notices');
+    final url = Uri.parse('$_baseUrl/api/users/admin/notices');
 
     try {
       final token = await _secureStorageService.loadToken();
@@ -101,7 +103,7 @@ class AvisoProvider with ChangeNotifier {
   }
 
   Future<void> updateAviso(Aviso aviso) async {
-    final url = Uri.parse('$baseUrl/api/users/admin/notices/${aviso.id}');
+    final url = Uri.parse('$_baseUrl/api/users/admin/notices/${aviso.id}');
 
     final requestBody = {
       'title': aviso.title,
@@ -142,7 +144,7 @@ class AvisoProvider with ChangeNotifier {
   }
 
   Future<void> removeAviso(Aviso aviso) async {
-    final url = Uri.parse('$baseUrl/api/users/admin/notices/${aviso.id}');
+    final url = Uri.parse('$_baseUrl/api/users/admin/notices/${aviso.id}');
 
     try {
       final token = await _secureStorageService.loadToken();

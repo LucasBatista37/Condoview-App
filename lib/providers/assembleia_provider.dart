@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:condoview/models/assembleia_model.dart';
 import 'package:logger/logger.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class AssembleiaProvider with ChangeNotifier {
-  final String _baseUrl = 'https://backend-condoview.onrender.com';
+  final String _baseUrl = dotenv.env['BASE_URL'] ?? 'http://10.0.1.3:5000';
 
   List<Assembleia> _assembleias = [];
   Timer? _pollingTimer;
@@ -121,7 +122,8 @@ class AssembleiaProvider with ChangeNotifier {
         throw Exception('Falha ao atualizar assembleia: ${response.body}');
       }
     } catch (error, stacktrace) {
-      logger.e('Erro ao atualizar assembleia', error: error, stackTrace: stacktrace);
+      logger.e('Erro ao atualizar assembleia',
+          error: error, stackTrace: stacktrace);
     }
   }
 

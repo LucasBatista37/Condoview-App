@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:condoview/models/ocorrencia_model.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class OcorrenciaProvider with ChangeNotifier {
   List<Ocorrencia> _ocorrencias = [];
@@ -15,7 +16,7 @@ class OcorrenciaProvider with ChangeNotifier {
   Ocorrencia? get selectedOcorrencia => _selectedOcorrencia;
   bool get isLoading => _isLoading;
 
-  final String _baseUrl = 'https://backend-condoview.onrender.com';
+  final String _baseUrl = dotenv.env['BASE_URL'] ?? 'http://10.0.1.3:5000';
 
   Future<void> addOcorrencia({
     required String motivo,
@@ -54,7 +55,7 @@ class OcorrenciaProvider with ChangeNotifier {
     }
   }
 
-    Future<void> fetchOcorrencias() async {
+  Future<void> fetchOcorrencias() async {
     final url = Uri.parse('$_baseUrl/api/users/admin/ocorrencias');
     print('Iniciando a busca de ocorrências...');
 

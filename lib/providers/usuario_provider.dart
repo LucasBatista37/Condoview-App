@@ -3,9 +3,10 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:condoview/services/secure_storege_service.dart';
 import 'package:condoview/models/usuario_model.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class UsuarioProvider with ChangeNotifier {
-  final String _baseUrl = 'https://backend-condoview.onrender.com';
+  final String _baseUrl = dotenv.env['BASE_URL'] ?? 'http://10.0.1.3:5000';
 
   String _userName = '';
   String _userProfileImage = '';
@@ -34,11 +35,6 @@ class UsuarioProvider with ChangeNotifier {
 
   Future<void> _saveTokenToSecureStorage(String token) async {
     await _secureStorageService.saveToken(token);
-  }
-
-  Future<void> _removeTokenFromSecureStorage() async {
-    await _secureStorageService.deleteToken();
-    _token = null;
   }
 
   Map<String, String> _getHeaders() {

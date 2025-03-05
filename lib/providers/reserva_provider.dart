@@ -5,8 +5,8 @@ import 'package:condoview/providers/usuario_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
 import 'package:provider/provider.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class ReservaProvider with ChangeNotifier {
   List<Reserva> _reservas = [];
@@ -14,7 +14,7 @@ class ReservaProvider with ChangeNotifier {
   List<Reserva> get reservas => _reservas;
   Timer? _pollingTimer;
 
-  final String _baseUrl = 'https://backend-condoview.onrender.com';
+  final String _baseUrl = dotenv.env['BASE_URL'] ?? 'http://10.0.1.3:5000';
 
   Future<void> adicionarReserva(BuildContext context, Reserva reserva) async {
     final usuarioProvider =

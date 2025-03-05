@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class MoradorProvider with ChangeNotifier {
-  final String _baseUrl = 'https://backend-condoview.onrender.com';
+  final String _baseUrl = dotenv.env['BASE_URL'] ?? 'http://10.0.1.3:5000';
 
   Future<void> adicionarMorador(
       String email, String telefone, String funcionalidade) async {
@@ -28,6 +29,6 @@ class MoradorProvider with ChangeNotifier {
       throw Exception(errorResponse['errors'][0]);
     }
 
-    notifyListeners(); 
+    notifyListeners();
   }
 }

@@ -4,9 +4,10 @@ import 'package:condoview/models/chat_message.dart';
 import 'package:condoview/services/secure_storege_service.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class ChatProvider with ChangeNotifier {
-  final String _baseUrl = 'https://backend-condoview.onrender.com';
+  final String _baseUrl = dotenv.env['BASE_URL'] ?? 'http://10.0.1.3:5000';
 
   List<ChatMessage> _messages = [];
   final StreamController<List<ChatMessage>> _messagesStreamController =
@@ -34,7 +35,8 @@ class ChatProvider with ChangeNotifier {
     try {
       final token = await _secureStorageService.loadToken();
       if (token == null) {
-        throw Exception("Token não encontrado. O usuário não está autenticado.");
+        throw Exception(
+            "Token não encontrado. O usuário não está autenticado.");
       }
 
       print("Log: Token usado para buscar mensagens: $token");
@@ -88,7 +90,8 @@ class ChatProvider with ChangeNotifier {
     try {
       final token = await _secureStorageService.loadToken();
       if (token == null) {
-        throw Exception("Token não encontrado. O usuário não está autenticado.");
+        throw Exception(
+            "Token não encontrado. O usuário não está autenticado.");
       }
 
       print("Log: Token usado para enviar mensagem: $token");

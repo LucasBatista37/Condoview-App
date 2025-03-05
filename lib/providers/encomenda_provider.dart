@@ -4,9 +4,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:condoview/models/encomenda_model.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class EncomendasProvider with ChangeNotifier {
-  final String _baseUrl = 'https://backend-condoview.onrender.com';
+  final String _baseUrl = dotenv.env['BASE_URL'] ?? 'http://10.0.1.3:5000';
   List<Encomenda> _encomendas = [];
   Timer? _pollingTimer;
   bool _isLoading = false;
