@@ -1,0 +1,53 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // O Flutter Gradle Plugin deve ser aplicado após os plugins Android e Kotlin
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.condoview" // Namespace deve corresponder ao applicationId
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8" // Corrigido o valor para o formato esperado
+    }
+
+    defaultConfig {
+        applicationId = "com.example.condoview" // Deve ser único para sua aplicação
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    buildTypes {
+        debug {
+            signingConfig = signingConfigs.debug
+        }
+
+        release {
+            // Configuração de assinatura
+            signingConfig = signingConfigs.debug
+
+            // Habilitar shrinker e obfuscador
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        viewBinding true // Habilitar View Binding, caso necessário
+    }
+}
+
+flutter {
+    source = "../.." // Caminho para o diretório raiz do projeto Flutter
+}
