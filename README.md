@@ -1,44 +1,45 @@
-**# Condoview - App e Sistema de Condomínio (TCC)**
+# Condoview - App e Sistema de Condomínio (TCC)
 
-Este projeto foi desenvolvido como Trabalho de Conclusão de Curso (TCC), visando atender tanto \***\*moradores\*\*** quanto \***\*síndicos\*\*** de um condomínio. A aplicação \***\*Flutter\*\*** comunica-se com um \***\*Node.js/MongoDB\*\***, oferecendo recursos como gestão de moradores, reservas de áreas comuns, avisos e muito mais.
+Este projeto foi desenvolvido como Trabalho de Conclusão de Curso (TCC), visando atender tanto *****moradores**** quanto ****síndicos**** de um condomínio. A aplicação ****Flutter**** comunica-se com um *****Node.js/MongoDB****, oferecendo recursos como gestão de moradores, reservas de áreas comuns, avisos e muito mais.
 
 ---
 
-**## :movie_camera: Demonstração em Vídeo**
+### :movie_camera: Demonstração em Vídeo
 
 Assista ao vídeo de apresentação do sistema:
 
-[![Demonstração do App](__https://i9.ytimg.com/vi_webp/E2fc69-hLe4/mqdefault.webp?v=67c7920f&sqp=CNSlnr4G&rs=AOn4CLCPND9BDnGDWQjafbwudCSK2q79IQ__)](__https://www.youtube.com/watch?v=E2fc69-hLe4__ "Clique para assistir")
+[![Demonstração do App](https://img.youtube.com/vi/E2fc69-hLe4/0.jpg)](https://www.youtube.com/watch?v=E2fc69-hLe4 "Clique para assistir")
+
 
 ---
 
-**## :wrench: Tecnologias Utilizadas**
+****## :wrench: Tecnologias Utilizadas****
 
-**### Front-end (Flutter)**
+****### Front-end (Flutter)****
 
-- \***\*Dart/Flutter\*\***
+- \*********\*****Dart/Flutter****\*\*********
 
-**### Back-end (Node.js)**
+****### Back-end (Node.js)****
 
-- \***\*Express\*\***
-- \***\*MongoDB\*\*** + Mongoose
-- \***\*JWT\*\***
+- \*********\*****Express****\*\*********
+- \*********\*****MongoDB****\*\********* + Mongoose
+- \*********\*****JWT****\*\*********
 
 ---
 
-**## :sparkles: Funcionalidades Principais**
+****## :sparkles: Funcionalidades Principais****
 
-1. \***\*Autenticação de Usuários\*\***
+1. \*********\*****Autenticação de Usuários****\*\*********
    (morador e síndico com permissões diferentes)
-2. \***\*Cadastro e Consulta de Moradores\*\***
-3. \***\*Reservas\*\*** de áreas comuns
-4. \***\*Gestão de Ocorrências\*\***
+2. \*********\*****Cadastro e Consulta de Moradores****\*\*********
+3. \*********\*****Reservas****\*\********* de áreas comuns
+4. \*********\*****Gestão de Ocorrências****\*\*********
 
 ---
 
-**## :inbox_tray: Instalação e Execução**
+****## :inbox_tray: Instalação e Execução****
 
-**### 1. Clonar o Repositório**
+****### 1. Clonar o Repositório****
 
 ```bash
 git clone https://github.com/LucasBatista37/Condoview-App.git
@@ -46,9 +47,9 @@ git clone https://github.com/LucasBatista37/Condoview-App.git
 
 ---
 
-### 2. Configurar Variáveis de Ambiente
+**### 2. Configurar Variáveis de Ambiente**
 
-#### No Back-end
+**#### No Back-end**
 
 1.  Navegue até a pasta `backend`:
 
@@ -73,7 +74,7 @@ git clone https://github.com/LucasBatista37/Condoview-App.git
 
 4.  Certifique-se de que o arquivo `.env` está listado no `.gitignore` para não ser comitado.
 
-#### No Front-end (Flutter)
+**#### No Front-end (Flutter)**
 
 1.  Se o app precisar acessar a API do back-end, crie também um arquivo `.env` na raiz da pasta `frontend`:
 
@@ -88,11 +89,11 @@ git clone https://github.com/LucasBatista37/Condoview-App.git
     BASE_URL=http://10.0.1.3:5000
     ```
 
-    > **Obs:** Se estiver usando um emulador Android, para acessar o localhost da máquina de desenvolvimento use `10.0.2.2`.
+    > ****Obs:**** Se estiver usando um emulador Android, para acessar o localhost da máquina de desenvolvimento use `10.0.2.2`.
 
 ---
 
-### 3. Configurar o Back-end
+**### 3. Configurar o Back-end**
 
 1.  Navegue para a pasta `backend`:
 
@@ -128,9 +129,9 @@ git clone https://github.com/LucasBatista37/Condoview-App.git
 
 ---
 
-### 4. Configurar o Front-end (Flutter)
+**### 4. Configurar o Front-end (Flutter)**
 
-1.  Navegue para a pasta `frontend`:
+1.  Navegue para a pasta `condoview`:
 
     ```bash
     cd ../condoview
@@ -162,33 +163,33 @@ git clone https://github.com/LucasBatista37/Condoview-App.git
   _Função:_ Desenvolvedor Backend & Designer  
   GitHub: [@adryan-santana-flooxmongagua](https://github.com/adryan-santana-flooxmongagua)
 
-- [![Foto de Nicholas Balbino](https://github.com/NicDeveloper7.png?size=100)](https://github.com/NicDeveloper7)  
+- [![Foto de Nicholas Balbino](https://github.com/null.png?size=100)](https://github.com/NicDeveloper7)  
   **Nicholas Balbino**  
   _Função:_ Desenvolvedor Backend  
   GitHub: [@NicDeveloper7](https://github.com/NicDeveloper7)
 
-- [![Foto de Edkarllos Fernando](https://github.com/Edkarllos.png?size=100)](https://github.com/Edkarllos)  
+- [![Foto de Edkarllos Fernando](https://github.com/null.png?size=100)](https://github.com/Edkarllos)  
   **Edkarllos Fernando**  
   _Função:_ Documentação  
   GitHub: [@Edkarllos](https://github.com/Edkarllos)
 
-- [![Foto de Pedro Henrique Lopes](https://github.com/HenriqueOLopes.png?size=100)](https://github.com/HenriqueOLopes)  
+- [![Foto de Pedro Henrique Lopes](https://github.com/null.png?size=100)](https://github.com/HenriqueOLopes)  
   **Pedro Henrique Lopes**  
   _Função:_ Documentação  
   GitHub: [@HenriqueOLopes](https://github.com/HenriqueOLopes)
 
 ---
 
-## :movie_camera: Capturas de Tela - Morador
+**## :movie_camera: Capturas de Tela - Morador**
 
-![Telas do morador](./condoview/assets/images/morador.jpg)
+![Telas do morador](__./assets/images/morador.jpg__)
 
 ---
 
-## :wave: Contato
+**## :wave: Contato**
 
 Em caso de dúvidas ou sugestões:
 
-- **E-mail**: [lucas.batista9734@gmail.com](mailto:lucas.batista9734@gmail.com)
-- **LinkedIn**: [www.linkedin.com/in/lucas-batista-004212263/](https://linkedin.com/in/lucas-batista-004212263)
-- **GitHub**: [https://github.com/LucasBatista37](https://github.com/LucasBatista37)
+- ****E-mail****: [lucas.batista9734@gmail.com](__mailto:lucas.batista9734@gmail.com__)
+- ****LinkedIn****: [www.linkedin.com/in/lucas-batista-004212263/](__https://linkedin.com/in/lucas-batista-004212263__)
+- ****GitHub****: [https://github.com/LucasBatista37](__https://github.com/LucasBatista37__)
