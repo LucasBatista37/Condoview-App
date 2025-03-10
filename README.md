@@ -13,21 +13,21 @@ Assista ao vídeo de apresentação do sistema:
 
 ---
 
-****## :wrench: Tecnologias Utilizadas****
+## :wrench: Tecnologias Utilizadas
 
-****### Front-end (Flutter)****
+### Front-end (Flutter)
 
-- \*********\*****Dart/Flutter****\*\*********
+- **Dart/Flutter**
 
-****### Back-end (Node.js)****
+### Back-end (Node.js)
 
-- \*********\*****Express****\*\*********
-- \*********\*****MongoDB****\*\********* + Mongoose
-- \*********\*****JWT****\*\*********
+- **Express**
+- **MongoDB**
+- **JWT**
 
 ---
 
-****## :sparkles: Funcionalidades Principais****
+## :sparkles: Funcionalidades Principais
 
 1. \*********\*****Autenticação de Usuários****\*\*********
    (morador e síndico com permissões diferentes)
@@ -37,9 +37,9 @@ Assista ao vídeo de apresentação do sistema:
 
 ---
 
-****## :inbox_tray: Instalação e Execução****
+## :inbox_tray: Instalação e Execução
 
-****### 1. Clonar o Repositório****
+### 1. Clonar o Repositório
 
 ```bash
 git clone https://github.com/LucasBatista37/Condoview-App.git
@@ -47,9 +47,9 @@ git clone https://github.com/LucasBatista37/Condoview-App.git
 
 ---
 
-**### 2. Configurar Variáveis de Ambiente**
+### 2. Configurar Variáveis de Ambiente
 
-**#### No Back-end**
+#### No Back-end
 
 1.  Navegue até a pasta `backend`:
 
@@ -74,7 +74,7 @@ git clone https://github.com/LucasBatista37/Condoview-App.git
 
 4.  Certifique-se de que o arquivo `.env` está listado no `.gitignore` para não ser comitado.
 
-**#### No Front-end (Flutter)**
+#### No Front-end (Flutter)
 
 1.  Se o app precisar acessar a API do back-end, crie também um arquivo `.env` na raiz da pasta `frontend`:
 
@@ -93,7 +93,7 @@ git clone https://github.com/LucasBatista37/Condoview-App.git
 
 ---
 
-**### 3. Configurar o Back-end**
+### 3. Configurar o Back-end
 
 1.  Navegue para a pasta `backend`:
 
@@ -129,7 +129,7 @@ git clone https://github.com/LucasBatista37/Condoview-App.git
 
 ---
 
-**### 4. Configurar o Front-end (Flutter)**
+### 4. Configurar o Front-end (Flutter)
 
 1.  Navegue para a pasta `condoview`:
 
@@ -173,23 +173,23 @@ git clone https://github.com/LucasBatista37/Condoview-App.git
   _Função:_ Documentação  
   GitHub: [@Edkarllos](https://github.com/Edkarllos)
 
-- [![Foto de Pedro Henrique Lopes](https://github.com/null.png?size=100)](https://github.com/HenriqueOLopes)  
+- [![Foto de Pedro Henrique Lopes](https://github.com/Lopezkz.png?size=100)](https://github.com/Lopezkz)  
   **Pedro Henrique Lopes**  
   _Função:_ Documentação  
-  GitHub: [@HenriqueOLopes](https://github.com/HenriqueOLopes)
+  GitHub: [@HenriqueOLopes](https://github.com/Lopezkz)
 
 ---
 
-**## :movie_camera: Capturas de Tela - Morador**
+## :movie_camera: Capturas de Tela - Morador
 
 ![Telas do morador](assets/images/morador.jpg)
 
 ---
 
-**## :wave: Contato**
+## :wave: Contato
 
 Em caso de dúvidas ou sugestões:
 
-- ****E-mail****: [lucas.batista9734@gmail.com](__mailto:lucas.batista9734@gmail.com__)
-- ****LinkedIn****: [www.linkedin.com/in/lucas-batista-004212263/](__https://linkedin.com/in/lucas-batista-004212263__)
-- ****GitHub****: [https://github.com/LucasBatista37](__https://github.com/LucasBatista37__)
+- ****E-mail****: [lucas.batista9734@gmail.com](mailto:lucas.batista9734@gmail.com)
+- ****LinkedIn****: [www.linkedin.com/in/lucas-batista-004212263/](https://linkedin.com/in/lucas-batista-004212263)
+- ****GitHub****: [https://github.com/LucasBatista37](https://github.com/LucasBatista37)
