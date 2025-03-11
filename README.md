@@ -1,6 +1,6 @@
 # Condoview - App e Sistema de Condomínio (TCC)
 
-Este projeto foi desenvolvido como Trabalho de Conclusão de Curso (TCC), visando atender tanto *****moradores**** quanto ****síndicos**** de um condomínio. A aplicação ****Flutter**** comunica-se com um *****Node.js/MongoDB****, oferecendo recursos como gestão de moradores, reservas de áreas comuns, avisos e muito mais.
+Este projeto foi desenvolvido como Trabalho de Conclusão de Curso (TCC), visando atender tanto **moradores** quanto **síndicos** de um condomínio. A aplicação **Flutter** comunica-se com um **Node.js/MongoDB**, oferecendo recursos como gestão de moradores, reservas de áreas comuns, avisos e muito mais.
 
 ---
 
@@ -29,11 +29,11 @@ Assista ao vídeo de apresentação do sistema:
 
 ## :sparkles: Funcionalidades Principais
 
-1. \*********\*****Autenticação de Usuários****\*\*********
+1. **Autenticação de Usuários**
    (morador e síndico com permissões diferentes)
-2. \*********\*****Cadastro e Consulta de Moradores****\*\*********
-3. \*********\*****Reservas****\*\********* de áreas comuns
-4. \*********\*****Gestão de Ocorrências****\*\*********
+2. **Cadastro e Consulta de Moradores**
+3. **Reservas** de áreas comuns
+4. **Gestão de Ocorrências**
 
 ---
 
