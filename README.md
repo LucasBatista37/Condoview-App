@@ -6,9 +6,9 @@ Este projeto foi desenvolvido como Trabalho de Conclusão de Curso (TCC), visand
 
 ### :movie_camera: Demonstração em Vídeo
 
-Assista ao vídeo de apresentação do sistema:
+Assista ao vídeo de apresentação do app:
 
-[![Demonstração do App](https://img.youtube.com/vi/E2fc69-hLe4/0.jpg)](https://www.youtube.com/watch?v=E2fc69-hLe4 "Clique para assistir")
+[![Demonstração do App](https://lucasbatista.online/assets/condoview-OjTas-yd.png)](https://www.youtube.com/watch?v=E2fc69-hLe4 "Clique para assistir")
 
 
 ---
