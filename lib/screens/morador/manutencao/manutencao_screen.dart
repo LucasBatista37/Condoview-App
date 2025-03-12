@@ -9,6 +9,7 @@ class ManutencaoScreen extends StatefulWidget {
   const ManutencaoScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _ManutencaoScreenState createState() => _ManutencaoScreenState();
 }
 
@@ -26,7 +27,7 @@ class _ManutencaoScreenState extends State<ManutencaoScreen> {
       final manutencaoProvider =
           Provider.of<ManutencaoProvider>(context, listen: false);
       await manutencaoProvider.fetchManutencoes();
-      manutencaoProvider.startPolling();
+      manutencaoProvider;
     } catch (error) {
       print("Erro ao buscar manutenções: $error");
     } finally {
@@ -40,7 +41,7 @@ class _ManutencaoScreenState extends State<ManutencaoScreen> {
   void dispose() {
     final manutencaoProvider =
         Provider.of<ManutencaoProvider>(context, listen: false);
-    manutencaoProvider.stopPolling();
+    manutencaoProvider;
     super.dispose();
   }
 
@@ -128,8 +129,6 @@ class _ManutencaoScreenState extends State<ManutencaoScreen> {
       required String description,
       required String status}) {
     status = status.trim();
-
-    print('Status: $status');
 
     Color statusColor;
     switch (status) {

@@ -4,7 +4,10 @@ import 'dart:convert';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
 class QRCodeScannerScreen extends StatefulWidget {
+  const QRCodeScannerScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _QRCodeScannerScreenState createState() => _QRCodeScannerScreenState();
 }
 
@@ -36,10 +39,8 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen> {
           for (final barcode in barcodes) {
             if (barcode.rawValue != null) {
               final String qrData = barcode.rawValue!;
-              print("QR code scanned: $qrData");
               verificarQRCode(context, qrData);
             } else {
-              print("QR code is null");
             }
           }
         },
@@ -48,15 +49,12 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen> {
   }
 
   void verificarQRCode(BuildContext context, String qrData) {
-    print("Verificando QR code data: $qrData");
     try {
       final Map<String, dynamic> dados = jsonDecode(qrData);
-      print("QR code data decoded successfully: $dados");
 
       final String data = dados['data'];
       final String hora = dados['hora'];
 
-      print("Data: $data, Hora: $hora");
 
       Navigator.push(
         context,
@@ -64,9 +62,7 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen> {
           builder: (context) => ResultadoQRCodeScreen(data: data, hora: hora),
         ),
       );
-    } catch (e, stackTrace) {
-      print("Erro ao decodificar QR Code: $e");
-      print("Stack trace: $stackTrace");
+    } catch (e) {
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Erro ao decodificar QR Code: $e")),

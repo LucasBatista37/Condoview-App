@@ -10,7 +10,6 @@ class AssembleiaProvider with ChangeNotifier {
   final String _baseUrl = dotenv.env['BASE_URL'] ?? 'http://10.0.1.3:5000';
 
   List<Assembleia> _assembleias = [];
-  Timer? _pollingTimer;
 
   List<Assembleia> get assembleia => _assembleias;
 
@@ -82,23 +81,6 @@ class AssembleiaProvider with ChangeNotifier {
       logger.e('Erro ao buscar assembleias',
           error: error, stackTrace: stacktrace);
     }
-  }
-
-  void startPolling() {
-    _pollingTimer?.cancel();
-    _pollingTimer = Timer.periodic(const Duration(seconds: 3), (timer) {
-      fetchAssembleias();
-    });
-  }
-
-  void stopPolling() {
-    _pollingTimer?.cancel();
-  }
-
-  @override
-  void dispose() {
-    _pollingTimer?.cancel();
-    super.dispose();
   }
 
   Future<void> updateAssembleia(Assembleia assembleia) async {

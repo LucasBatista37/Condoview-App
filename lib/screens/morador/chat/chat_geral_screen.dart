@@ -12,6 +12,7 @@ class ChatGeralScreen extends StatefulWidget {
   const ChatGeralScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _ChatGeralScreenState createState() => _ChatGeralScreenState();
 }
 
@@ -25,22 +26,20 @@ class _ChatGeralScreenState extends State<ChatGeralScreen> {
   void initState() {
     super.initState();
     _loadMessages();
-    Provider.of<ChatProvider>(context, listen: false).startPolling();
+    Provider.of<ChatProvider>(context, listen: false);
   }
 
   @override
   void dispose() {
-    Provider.of<ChatProvider>(context, listen: false).stopPolling();
+    Provider.of<ChatProvider>(context, listen: false);
     super.dispose();
   }
 
   Future<void> _loadMessages() async {
     try {
-      print("Tentando carregar mensagens...");
       await Provider.of<ChatProvider>(context, listen: false).fetchMessages();
-      print("Mensagens carregadas com sucesso.");
     } catch (error) {
-      print("Erro ao carregar mensagens: $error");
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Erro ao carregar mensagens: $error')),
       );
@@ -54,8 +53,6 @@ class _ChatGeralScreenState extends State<ChatGeralScreen> {
         Provider.of<UsuarioProvider>(context, listen: false);
     final userId = usuarioProvider.userId;
     final currentName = usuarioProvider.currentName;
-
-    print("Usuário atual: ID = $userId, Nome = $currentName");
 
     return Scaffold(
       appBar: AppBar(
@@ -265,6 +262,7 @@ class _ChatGeralScreenState extends State<ChatGeralScreen> {
         });
       }
     } else {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Permissão para acessar a câmera negada')),
       );
@@ -279,6 +277,7 @@ class _ChatGeralScreenState extends State<ChatGeralScreen> {
         _fileName = result.files.single.name;
       });
     } else {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Nenhum arquivo selecionado')),
       );
@@ -297,29 +296,21 @@ class _ChatGeralScreenState extends State<ChatGeralScreen> {
 
     final chatProvider = Provider.of<ChatProvider>(context, listen: false);
 
-    print("Enviando mensagem...");
-    print("userId: $userId");
-    print("userName: $userName");
-    print("message: $message");
-    print("imagePath: ${_image?.path}");
-    print("fileName: $_fileName");
-
     try {
       await chatProvider.sendMessage(
         message,
         _image?.path,
-        _fileName ?? '', // Corrige o tipo para String
+        _fileName ?? '',
         userId,
         userName,
       );
-      print("Mensagem enviada com sucesso.");
       _messageController.clear();
       setState(() {
         _image = null;
         _fileName = null;
       });
     } catch (error) {
-      print("Erro ao enviar mensagem: $error");
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Erro ao enviar mensagem: $error')),
       );

@@ -9,8 +9,6 @@ class HistoricoProvider with ChangeNotifier {
 
   List<dynamic> _avisos = [];
   List<dynamic> _assembleias = [];
-  Timer? _pollingTimer;
-
   List<dynamic> get avisos => _avisos;
   List<dynamic> get assembleias => _assembleias;
 
@@ -46,23 +44,5 @@ class HistoricoProvider with ChangeNotifier {
     } catch (error) {
       print('Erro ao buscar assembleias: $error');
     }
-  }
-
-  void startPolling() {
-    stopPolling();
-    _pollingTimer = Timer.periodic(const Duration(seconds: 10), (timer) {
-      fetchAssembleias();
-      fetchAvisos();
-    });
-  }
-
-  void stopPolling() {
-    _pollingTimer?.cancel();
-  }
-
-  @override
-  void dispose() {
-    stopPolling();
-    super.dispose();
   }
 }

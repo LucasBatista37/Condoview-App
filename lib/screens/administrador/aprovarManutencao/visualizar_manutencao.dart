@@ -8,6 +8,7 @@ class VisualizarManutencoesScreen extends StatefulWidget {
   const VisualizarManutencoesScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _VisualizarManutencoesScreenState createState() =>
       _VisualizarManutencoesScreenState();
 }
@@ -27,7 +28,7 @@ class _VisualizarManutencoesScreenState
       final manutencaoProvider =
           Provider.of<ManutencaoProvider>(context, listen: false);
       await manutencaoProvider.fetchManutencoes();
-      manutencaoProvider.startPolling(); 
+      manutencaoProvider;
     } catch (error) {
       print("Erro ao buscar manutenções: $error");
     } finally {
@@ -41,7 +42,7 @@ class _VisualizarManutencoesScreenState
   void dispose() {
     final manutencaoProvider =
         Provider.of<ManutencaoProvider>(context, listen: false);
-    manutencaoProvider.stopPolling(); 
+    manutencaoProvider;
     super.dispose();
   }
 

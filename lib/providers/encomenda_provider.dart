@@ -59,19 +59,8 @@ class EncomendasProvider with ChangeNotifier {
       }
     } catch (error) {
       debugPrint("Erro ao adicionar encomenda: $error");
-      throw error;
+      rethrow;
     }
-  }
-
-  void startPolling() {
-    _pollingTimer?.cancel();
-    _pollingTimer = Timer.periodic(Duration(seconds: 10), (timer) {
-      fetchEncomendas();
-    });
-  }
-
-  void stopPolling() {
-    _pollingTimer?.cancel();
   }
 
   Future<void> fetchEncomendas() async {
@@ -93,8 +82,7 @@ class EncomendasProvider with ChangeNotifier {
         throw Exception('Falha ao carregar encomendas: ${response.body}');
       }
     } catch (error) {
-      print('Erro ao buscar encomendas: $error');
-      throw error;
+      rethrow;
     } finally {
       _isLoading = false;
       notifyListeners();

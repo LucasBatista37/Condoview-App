@@ -52,6 +52,9 @@ dependencies:
   web_socket_channel: ^3.0.1
   mobile_scanner: ^6.0.2
   logger: ^2.5.0
+  flutter_native_splash: ^2.4.4
+  flutter_launcher_icons: ^0.13.1
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -68,6 +71,21 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^4.0.0
+
+flutter_native_splash:
+  color: "#ffffff" 
+  image: assets/images/logo.png
+  android_12:
+    image: assets/images/logo.png
+    icon_background_color: "#ffffff" 
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/logo.png" 
+  adaptive_icon_background: "#ffffff" 
+  adaptive_icon_foreground: "assets/images/logo.png" 
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

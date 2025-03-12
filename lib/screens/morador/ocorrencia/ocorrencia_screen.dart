@@ -34,13 +34,6 @@ class _OcorrenciaScreenState extends State<OcorrenciaScreen> {
       return;
     }
 
-    print('Dados a serem enviados:');
-    print('Motivo: ${_motivoController.text}');
-    print('Descrição: ${_descricaoController.text}');
-    print('Data: ${_selectedDate}');
-    print(
-        'Imagem: ${_image != null ? _image!.path : 'Nenhuma imagem selecionada'}');
-
     Provider.of<OcorrenciaProvider>(context, listen: false)
         .addOcorrencia(
       motivo: _motivoController.text,
@@ -49,14 +42,16 @@ class _OcorrenciaScreenState extends State<OcorrenciaScreen> {
       imagem: _image != null ? File(_image!.path) : null,
     )
         .then((_) {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Ocorrência enviada com sucesso!'),
         ),
       );
+      // ignore: use_build_context_synchronously
       Navigator.pop(context);
     }).catchError((error) {
-      print('Erro no catch: $error');
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Erro ao enviar a ocorrência.'),

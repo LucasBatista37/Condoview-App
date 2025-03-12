@@ -35,9 +35,6 @@ class _SolicitarReservaState extends State<SolicitarReserva> {
   void _submit() async {
     debugPrint('Iniciando submissão da reserva.');
 
-    print('Horário de Início: $_startTime');
-    print('Horário de Término: $_endTime');
-
     if (_selectedArea == null ||
         _selectedDate == null ||
         _startTime == null ||
@@ -85,12 +82,15 @@ class _SolicitarReservaState extends State<SolicitarReserva> {
       debugPrint('Enviando reserva ao provider...');
       await reservaProvider.adicionarReserva(context, novaReserva);
       debugPrint('Reserva enviada com sucesso.');
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Reserva adicionada com sucesso!')),
       );
+      // ignore: use_build_context_synchronously
       Navigator.pop(context);
     } catch (error) {
       debugPrint('Erro ao adicionar reserva: $error');
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Erro ao adicionar reserva.')),
       );

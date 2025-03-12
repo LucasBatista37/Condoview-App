@@ -3,11 +3,9 @@ import 'package:condoview/providers/chat_provider.dart';
 import 'package:condoview/providers/encomenda_provider.dart';
 import 'package:condoview/providers/manutencao_provider.dart';
 import 'package:condoview/providers/ocorrencia_provider.dart';
-import 'package:condoview/providers/personal_chat_provider.dart';
 import 'package:condoview/screens/administrador/createCondo/create_condo_screen.dart';
 import 'package:condoview/screens/morador/chat/chat_geral_screen.dart';
 import 'package:condoview/screens/morador/condominio/condominio_screen.dart';
-import 'package:condoview/screens/morador/conversas/coversations_screen.dart';
 import 'package:condoview/screens/morador/signup/signup_screen.dart';
 import 'package:condoview/services/secure_storege_service.dart';
 import 'package:condoview/providers/aviso_provider.dart';
@@ -38,7 +36,6 @@ void main() async {
         ChangeNotifierProvider(create: (context) => AssembleiaProvider()),
         ChangeNotifierProvider(create: (context) => ChatProvider()),
         ChangeNotifierProvider(create: (context) => CondoProvider()),
-        ChangeNotifierProvider(create: (context) => PersonalChatProvider()),
         Provider(create: (context) => SecureStorageService()),
       ],
       child: const MyApp(),
@@ -67,7 +64,6 @@ class MyApp extends StatelessWidget {
             '/search': (context) => const SearchScreen(),
             '/adicionar': (context) => const AdicionarAvisoScreen(),
             '/signup': (context) => const SignupScreen(),
-            '/conversas': (context) => const ConversationsScreen(),
             '/condominio': (context) => const CondominioScreen(),
             '/create_condo': (context) => const CreateCondoScreen(),
             '/chat_geral': (context) => const ChatGeralScreen(),

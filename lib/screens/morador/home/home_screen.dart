@@ -11,6 +11,7 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _HomeScreenState createState() => _HomeScreenState();
 }
 
@@ -40,9 +41,6 @@ class _HomeScreenState extends State<HomeScreen> {
     final usuarioProvider = Provider.of<UsuarioProvider>(context);
     final userName = usuarioProvider.userName;
     final userProfileImage = usuarioProvider.userProfileImage;
-
-    print('Log: Nome do usuário na HomeScreen: $userName');
-    print('Log: URL da imagem de perfil na HomeScreen: $userProfileImage');
 
     return Scaffold(
       key: _scaffoldKey,
@@ -74,7 +72,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       radius: 24,
                       backgroundImage: NetworkImage(userProfileImage),
                       onBackgroundImageError: (_, __) {
-                        print('Log: Erro ao carregar imagem de perfil');
                       },
                     ),
             ),
@@ -144,10 +141,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 final userRole = usuarioProvider.usuario?.role ?? 'morador';
 
                 if (userRole == 'administrador') {
-                  return Column(
+                  return const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.all(16.0),
                         child: Text(
                           'Administração',
@@ -155,9 +152,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                       ),
-                      const AdminGrid(),
-                      const SizedBox(height: 16),
-                      const Padding(
+                      AdminGrid(),
+                      SizedBox(height: 16),
+                      Padding(
                         padding: EdgeInsets.all(16.0),
                         child: Text(
                           'Menu Completo',
@@ -165,14 +162,14 @@ class _HomeScreenState extends State<HomeScreen> {
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                       ),
-                      const MenuGrid(),
+                      MenuGrid(),
                     ],
                   );
                 } else if (userRole == 'morador') {
-                  return Column(
+                  return const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.all(16.0),
                         child: Text(
                           'Menu Completo',
@@ -180,7 +177,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                       ),
-                      const MenuGrid(),
+                      MenuGrid(),
                     ],
                   );
                 } else {

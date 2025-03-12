@@ -8,6 +8,7 @@ class EditarMoradorScreen extends StatefulWidget {
   const EditarMoradorScreen({super.key, required this.morador});
 
   @override
+  // ignore: library_private_types_in_public_api
   _EditarMoradorScreenState createState() => _EditarMoradorScreenState();
 }
 

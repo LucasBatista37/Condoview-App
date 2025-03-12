@@ -138,16 +138,19 @@ class CreateAdminScreen extends StatelessWidget {
                             role: 'administrador', 
                           );
                           Navigator.pushReplacement(
+                            // ignore: use_build_context_synchronously
                             context,
                             MaterialPageRoute(
                                 builder: (context) => const HomeScreen()),
                           );
+                          // ignore: use_build_context_synchronously
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                               content: Text('Administrador criado com sucesso!'),
                             ),
                           );
                         } catch (error) {
+                          // ignore: use_build_context_synchronously
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Erro: $error')),
                           );

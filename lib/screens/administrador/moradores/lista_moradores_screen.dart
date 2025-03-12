@@ -10,6 +10,7 @@ class ListaMoradoresScreen extends StatefulWidget {
   const ListaMoradoresScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _ListaMoradoresScreenState createState() => _ListaMoradoresScreenState();
 }
 
@@ -30,6 +31,7 @@ class _ListaMoradoresScreenState extends State<ListaMoradoresScreen> {
         moradores = users;
       });
     } catch (e) {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Erro ao buscar usuários: $e')),
       );
@@ -82,9 +84,9 @@ class _ListaMoradoresScreenState extends State<ListaMoradoresScreen> {
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 18),
                           ),
-                          subtitle: Text(
+                          subtitle: const Text(
                             'Apartamento: 103B',
-                            style: const TextStyle(fontSize: 16),
+                            style: TextStyle(fontSize: 16),
                           ),
                           trailing: PopupMenuButton<String>(
                             onSelected: (value) {
@@ -168,14 +170,18 @@ class _ListaMoradoresScreenState extends State<ListaMoradoresScreen> {
                 setState(() {
                   moradores.removeAt(index);
                 });
+                // ignore: use_build_context_synchronously
                 Navigator.of(context).pop();
+                // ignore: use_build_context_synchronously
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text('${morador.nome} excluído'),
                   ),
                 );
               } catch (e) {
+                // ignore: use_build_context_synchronously
                 Navigator.of(context).pop();
+                // ignore: use_build_context_synchronously
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text('Erro ao excluir usuário: $e'),

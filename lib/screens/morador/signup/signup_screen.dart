@@ -9,6 +9,7 @@ class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _SignupScreenState createState() => _SignupScreenState();
 }
 
@@ -42,12 +43,14 @@ class _SignupScreenState extends State<SignupScreen> {
         await usuarioProvider.createUser(
             _nome, _emailController.text, _senhaController.text);
         Navigator.pushReplacement(
+          // ignore: use_build_context_synchronously
           context,
           MaterialPageRoute(
             builder: (context) => const HomeScreen(),
           ),
         );
       } catch (e) {
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Erro ao criar conta: $e')),
         );

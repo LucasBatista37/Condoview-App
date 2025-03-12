@@ -35,15 +35,18 @@ class _CreateCondoScreenState extends State<CreateCondoScreen> {
         await Provider.of<CondoProvider>(context, listen: false)
             .createCondo(condo);
 
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Condomínio criado com sucesso!')),
         );
 
         Navigator.push(
+          // ignore: use_build_context_synchronously
           context,
           MaterialPageRoute(builder: (context) => const CreateAdminScreen()),
         );
       } catch (error) {
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Erro ao criar condomínio: $error')),
         );

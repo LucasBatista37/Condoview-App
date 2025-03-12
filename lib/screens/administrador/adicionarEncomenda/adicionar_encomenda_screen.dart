@@ -16,6 +16,7 @@ class AdicionarEncomendaScreen extends StatefulWidget {
   const AdicionarEncomendaScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _AdicionarEncomendaScreenState createState() =>
       _AdicionarEncomendaScreenState();
 }
@@ -46,6 +47,7 @@ class _AdicionarEncomendaScreenState extends State<AdicionarEncomendaScreen> {
       debugPrint("Usuários carregados: ${_users.map((e) => e.nome).toList()}");
     } catch (e) {
       debugPrint("Erro ao carregar usuários: $e");
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Erro ao carregar usuários.')),
       );
@@ -66,6 +68,7 @@ class _AdicionarEncomendaScreenState extends State<AdicionarEncomendaScreen> {
 
     if (!await File(_imageFile!.path).exists()) {
       debugPrint("Arquivo de imagem não existe: ${_imageFile!.path}");
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Arquivo de imagem inválido.')),
       );
@@ -89,6 +92,7 @@ class _AdicionarEncomendaScreenState extends State<AdicionarEncomendaScreen> {
     debugPrint("Encomenda criada: ${encomenda.toJson()}");
 
     showDialog(
+      // ignore: use_build_context_synchronously
       context: context,
       barrierDismissible: false,
       builder: (context) {
@@ -97,18 +101,21 @@ class _AdicionarEncomendaScreenState extends State<AdicionarEncomendaScreen> {
     );
 
     try {
+      // ignore: use_build_context_synchronously
       await Provider.of<EncomendasProvider>(context, listen: false)
           .addEncomenda(encomenda);
 
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Encomenda adicionada com sucesso!')),
       );
-
-      Navigator.of(context).pop(); // Fechar diálogo
-      Navigator.of(context).pop(); // Voltar para tela anterior
+      // ignore: use_build_context_synchronously
+      Navigator.of(context).pop(); 
     } catch (error) {
-      Navigator.of(context).pop(); // Fechar diálogo
+      // ignore: use_build_context_synchronously
+      Navigator.of(context).pop();
       debugPrint("Erro no envio da encomenda: $error");
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Erro ao adicionar encomenda.')),
       );

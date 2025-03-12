@@ -18,12 +18,9 @@ class CondoProvider with ChangeNotifier {
       );
 
       if (response.statusCode == 201) {
-        final data = jsonDecode(response.body);
-        print('Condomínio ${data['name']} criado com sucesso!');
+        jsonDecode(response.body);
       } else if (response.statusCode == 422) {
-        print('Erro: CNPJ já cadastrado.');
       } else {
-        print('Erro ao criar condomínio. Status: ${response.statusCode}');
       }
     } catch (error) {
       print('Erro de conexão: $error');

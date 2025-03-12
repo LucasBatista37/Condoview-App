@@ -42,32 +42,24 @@ class OcorrenciaProvider with ChangeNotifier {
       final response = await request.send().timeout(Duration(seconds: 180));
 
       if (response.statusCode == 201) {
-        print('Ocorrência criada com sucesso!');
       } else {
-        final responseString = await response.stream.bytesToString();
-        print(
-            'Erro ao criar ocorrência: ${response.statusCode} - $responseString');
         throw Exception('Falha ao criar ocorrência');
       }
     } catch (error) {
-      print('Erro ao enviar a ocorrência: $error');
-      throw error;
+      rethrow;
     }
   }
 
   Future<void> fetchOcorrencias() async {
     final url = Uri.parse('$_baseUrl/api/users/admin/ocorrencias');
-    print('Iniciando a busca de ocorrências...');
 
     try {
       _isLoading = true;
       notifyListeners();
 
       final response = await http.get(url).timeout(Duration(seconds: 3));
-      print('Requisição feita para: $url');
 
       if (response.statusCode == 200) {
-        print('Requisição bem-sucedida. Status: ${response.statusCode}');
         final data = json.decode(response.body) as List;
 
         _ocorrencias = data.map((item) {
@@ -90,17 +82,6 @@ class OcorrenciaProvider with ChangeNotifier {
       _isLoading = false;
       notifyListeners();
     }
-  }
-
-  void startPolling() {
-    _pollingTimer?.cancel();
-    _pollingTimer = Timer.periodic(Duration(seconds: 10), (timer) {
-      fetchOcorrencias();
-    });
-  }
-
-  void stopPolling() {
-    _pollingTimer?.cancel();
   }
 
   @override

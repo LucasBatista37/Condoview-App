@@ -11,20 +11,7 @@ class AvisosDetalhesMoradorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final avisoProvider = Provider.of<AvisoProvider>(context);
-    final Aviso? aviso = avisoProvider.getAvisoById(id);
-
-    if (aviso == null) {
-      return Scaffold(
-        appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 78, 20, 166),
-          foregroundColor: Colors.white,
-          title: const Text('Detalhes do Aviso'),
-        ),
-        body: const Center(
-          child: Text('Aviso não encontrado.'),
-        ),
-      );
-    }
+    final Aviso aviso = avisoProvider.getAvisoById(id);
 
     return Scaffold(
       appBar: AppBar(

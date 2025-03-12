@@ -9,6 +9,7 @@ class AdicionarAvisoScreen extends StatefulWidget {
   const AdicionarAvisoScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _AdicionarAvisoScreenState createState() => _AdicionarAvisoScreenState();
 }
 
@@ -107,13 +108,16 @@ class _AdicionarAvisoScreenState extends State<AdicionarAvisoScreen> {
 
     try {
       await Provider.of<AvisoProvider>(context, listen: false).addAviso(aviso);
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Aviso adicionado com sucesso!'),
         ),
       );
+      // ignore: use_build_context_synchronously
       Navigator.pop(context);
     } catch (error) {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Falha ao adicionar aviso: $error'),

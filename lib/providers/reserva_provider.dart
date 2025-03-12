@@ -12,7 +12,6 @@ class ReservaProvider with ChangeNotifier {
   List<Reserva> _reservas = [];
 
   List<Reserva> get reservas => _reservas;
-  Timer? _pollingTimer;
 
   final String _baseUrl = dotenv.env['BASE_URL'] ?? 'http://10.0.1.3:5000';
 
@@ -22,7 +21,6 @@ class ReservaProvider with ChangeNotifier {
     final userName = usuarioProvider.userName;
     final url = '$_baseUrl/api/users/reserve';
 
-    print('Dados a serem enviados: ${reserva.toJson()}');
     try {
       final reservaComUsuario = {
         ...reserva.toJson(),
@@ -57,8 +55,7 @@ class ReservaProvider with ChangeNotifier {
             'Erro ao criar reserva: ${response.statusCode} - ${response.body}');
       }
     } catch (error) {
-      print('Erro ao adicionar reserva: $error');
-      throw error;
+      rethrow;
     }
   }
 
@@ -89,32 +86,8 @@ class ReservaProvider with ChangeNotifier {
       }
     } catch (error) {
       debugPrint('Erro ao buscar reservas: $error');
-      throw error;
+      rethrow;
     }
-  }
-
-  void startPolling() {
-    _pollingTimer?.cancel();
-    _pollingTimer = Timer.periodic(Duration(seconds: 3), (timer) {
-      fetchReservas();
-    });
-  }
-
-  void stopPolling() {
-    _pollingTimer?.cancel();
-  }
-
-  @override
-  void dispose() {
-    _pollingTimer?.cancel();
-    super.dispose();
-  }
-
-  TimeOfDay _parseTime(String time) {
-    final parts = time.split(':');
-    final hour = int.parse(parts[0]);
-    final minute = int.parse(parts[1]);
-    return TimeOfDay(hour: hour, minute: minute);
   }
 
   Future<void> aprovarReserva(String id) async {
@@ -143,7 +116,7 @@ class ReservaProvider with ChangeNotifier {
       }
     } catch (error) {
       debugPrint('Erro ao aprovar reserva: $error');
-      throw error;
+      rethrow;
     }
   }
 
@@ -170,7 +143,7 @@ class ReservaProvider with ChangeNotifier {
       }
     } catch (error) {
       debugPrint('Erro ao rejeitar reserva: $error');
-      throw error;
+      rethrow;
     }
   }
 

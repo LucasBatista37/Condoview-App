@@ -8,6 +8,7 @@ class AvisosScreen extends StatefulWidget {
   const AvisosScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _AvisosScreenState createState() => _AvisosScreenState();
 }
 
@@ -26,7 +27,6 @@ class _AvisosScreenState extends State<AvisosScreen> {
     try {
       final avisoProvider = Provider.of<AvisoProvider>(context, listen: false);
       await avisoProvider.fetchAvisos();
-      avisoProvider.startPolling();
     } catch (error) {
       print("Erro ao buscar avisos: $error");
     } finally {
@@ -35,6 +35,7 @@ class _AvisosScreenState extends State<AvisosScreen> {
       });
     }
 
+    // ignore: use_build_context_synchronously
     final avisoProvider = Provider.of<AvisoProvider>(context, listen: false);
     avisoProvider.addListener(_scrollToBottomIfNeeded);
   }
@@ -43,7 +44,6 @@ class _AvisosScreenState extends State<AvisosScreen> {
   void dispose() {
     final avisoProvider = Provider.of<AvisoProvider>(context, listen: false);
     avisoProvider.removeListener(_scrollToBottomIfNeeded);
-    avisoProvider.stopPolling();
     _scrollController.dispose();
     super.dispose();
   }
@@ -51,7 +51,6 @@ class _AvisosScreenState extends State<AvisosScreen> {
   void _scrollToBottomIfNeeded() {
     final avisoProvider = Provider.of<AvisoProvider>(context, listen: false);
     if (avisoProvider.avisos.length > _previousAvisoCount) {
-      // Rola para o final da lista se houver novos avisos
       WidgetsBinding.instance.addPostFrameCallback((_) {
         _scrollController.animateTo(
           _scrollController.position.maxScrollExtent,

@@ -6,7 +6,7 @@ class ResultadoQRCodeScreen extends StatelessWidget {
   final String data;
   final String hora;
 
-  ResultadoQRCodeScreen({required this.data, required this.hora});
+  const ResultadoQRCodeScreen({super.key, required this.data, required this.hora});
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +72,7 @@ class ResultadoQRCodeScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                    MaterialPageRoute(builder: (context) => const HomeScreen()),
                     (route) => false,
                   );
                 },

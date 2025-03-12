@@ -8,6 +8,7 @@ class VisualizarReservasScreen extends StatefulWidget {
   const VisualizarReservasScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _VisualizarReservasScreenState createState() =>
       _VisualizarReservasScreenState();
 }
@@ -20,7 +21,7 @@ class _VisualizarReservasScreenState extends State<VisualizarReservasScreen> {
       final reservaProvider =
           Provider.of<ReservaProvider>(context, listen: false);
       reservaProvider.fetchReservas();
-      reservaProvider.startPolling();
+      reservaProvider;
     });
   }
 
@@ -28,7 +29,7 @@ class _VisualizarReservasScreenState extends State<VisualizarReservasScreen> {
   void dispose() {
     final reservaProvider =
         Provider.of<ReservaProvider>(context, listen: false);
-    reservaProvider.stopPolling();
+    reservaProvider;
     super.dispose();
   }
 

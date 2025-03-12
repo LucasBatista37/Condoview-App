@@ -8,12 +8,13 @@ class AprovarReservaScreen extends StatefulWidget {
   final int reservaIndex;
 
   const AprovarReservaScreen({
-    Key? key,
+    super.key,
     required this.reserva,
     required this.reservaIndex,
-  }) : super(key: key);
+  });
 
   @override
+  // ignore: library_private_types_in_public_api
   _AprovarReservaScreenState createState() => _AprovarReservaScreenState();
 }
 
@@ -148,12 +149,15 @@ class _AprovarReservaScreenState extends State<AprovarReservaScreen> {
       try {
         debugPrint('Aprovando reserva com ID: ${reserva.id}');
         await provider.aprovarReserva(reserva.id!);
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Reserva aprovada com sucesso!')),
         );
+        // ignore: use_build_context_synchronously
         Navigator.pop(context);
       } catch (error) {
         debugPrint('Erro ao aprovar reserva: $error');
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Erro ao aprovar reserva.')),
         );
@@ -178,12 +182,15 @@ class _AprovarReservaScreenState extends State<AprovarReservaScreen> {
       try {
         debugPrint('Rejeitando reserva com ID: ${reserva.id}');
         await provider.rejeitarReserva(reserva.id!);
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Reserva rejeitada.')),
         );
+        // ignore: use_build_context_synchronously
         Navigator.pop(context);
       } catch (error) {
         debugPrint('Erro ao rejeitar reserva: $error');
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Erro ao rejeitar reserva.')),
         );

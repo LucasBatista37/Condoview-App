@@ -76,8 +76,7 @@ class AprovarManutencaoScreen extends StatelessWidget {
 
   Widget _buildImageSection() {
     if (manutencao.imagemPath != null && manutencao.imagemPath!.isNotEmpty) {
-      final imageUrl = 'https://backend-condoview.onrender.com/' +
-          manutencao.imagemPath!.replaceAll(r'\', '/');
+      final imageUrl = 'https://backend-condoview.onrender.com/${manutencao.imagemPath!.replaceAll(r'\', '/')}';
       debugPrint('URL da imagem gerada: $imageUrl');
 
       return Column(

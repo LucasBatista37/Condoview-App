@@ -14,6 +14,7 @@ class SolicitarManutencaoScreen extends StatefulWidget {
   const SolicitarManutencaoScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _SolicitarManutencaoScreenState createState() =>
       _SolicitarManutencaoScreenState();
 }

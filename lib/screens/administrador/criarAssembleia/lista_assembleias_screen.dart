@@ -11,6 +11,7 @@ class ListaAssembleiasScreen extends StatefulWidget {
   const ListaAssembleiasScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _ListaAssembleiasScreenState createState() => _ListaAssembleiasScreenState();
 }
 
@@ -28,7 +29,6 @@ class _ListaAssembleiasScreenState extends State<ListaAssembleiasScreen> {
       final assembleiaProvider =
           Provider.of<AssembleiaProvider>(context, listen: false);
       await assembleiaProvider.fetchAssembleias();
-      assembleiaProvider.startPolling(); 
     } catch (error) {
       print('Erro ao buscar assembleias: $error');
     } finally {
@@ -40,9 +40,7 @@ class _ListaAssembleiasScreenState extends State<ListaAssembleiasScreen> {
 
   @override
   void dispose() {
-    final assembleiaProvider =
-        Provider.of<AssembleiaProvider>(context, listen: false);
-    assembleiaProvider.stopPolling(); // Para o polling ao sair da tela
+    Provider.of<AssembleiaProvider>(context, listen: false);
     super.dispose();
   }
 

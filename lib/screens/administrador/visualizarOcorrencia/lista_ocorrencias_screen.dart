@@ -8,6 +8,7 @@ class ListaOcorrenciasScreen extends StatefulWidget {
   const ListaOcorrenciasScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _ListaOcorrenciasScreenState createState() => _ListaOcorrenciasScreenState();
 }
 
@@ -25,7 +26,7 @@ class _ListaOcorrenciasScreenState extends State<ListaOcorrenciasScreen> {
       final ocorrenciaProvider =
           Provider.of<OcorrenciaProvider>(context, listen: false);
       await ocorrenciaProvider.fetchOcorrencias();
-      ocorrenciaProvider.startPolling();
+      ocorrenciaProvider;
     } catch (error) {
       print("Erro ao buscar ocorrências: $error");
     } finally {
@@ -39,7 +40,7 @@ class _ListaOcorrenciasScreenState extends State<ListaOcorrenciasScreen> {
   void dispose() {
     final ocorrenciaProvider =
         Provider.of<OcorrenciaProvider>(context, listen: false);
-    ocorrenciaProvider.stopPolling(); 
+    ocorrenciaProvider; 
     super.dispose();
   }
 

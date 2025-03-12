@@ -32,12 +32,14 @@ class EncomendaDetalhesScreen extends StatelessWidget {
 
     try {
       await provider.updateEncomenda(encomendaAtualizada);
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Status atualizado para $novoStatus!')),
       );
+      // ignore: use_build_context_synchronously
       Navigator.pop(context, encomendaAtualizada);
     } catch (error) {
-      print('Erro ao atualizar status: $error');
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Erro ao atualizar status: $error')),
       );
@@ -49,7 +51,7 @@ class EncomendaDetalhesScreen extends StatelessWidget {
     debugPrint(
         "Detalhes da encomenda - Caminho da imagem: ${encomenda.imagePath}");
 
-    final String baseUrl =
+    const String baseUrl =
         'https://backend-condoview.onrender.com/uploads/package/';
     final String fullImageUrl =
         baseUrl + encomenda.imagePath.replaceAll(r'\', '/');

@@ -8,6 +8,7 @@ class EditarPerfilScreen extends StatefulWidget {
   const EditarPerfilScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _EditarPerfilScreenState createState() => _EditarPerfilScreenState();
 }
 
@@ -146,14 +147,17 @@ class _EditarPerfilScreenState extends State<EditarPerfilScreen> {
         profileImage: _profileImage?.path,
       );
 
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Perfil atualizado com sucesso!'),
         ),
       );
 
+      // ignore: use_build_context_synchronously
       Navigator.pop(context);
     } catch (error) {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Erro ao atualizar perfil: $error'),

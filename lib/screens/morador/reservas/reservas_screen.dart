@@ -9,6 +9,7 @@ class ReservasScreen extends StatefulWidget {
   const ReservasScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _ReservasScreenState createState() => _ReservasScreenState();
 }
 
@@ -26,7 +27,7 @@ class _ReservasScreenState extends State<ReservasScreen> {
       final reservaProvider =
           Provider.of<ReservaProvider>(context, listen: false);
       await reservaProvider.fetchReservas();
-      reservaProvider.startPolling();
+      reservaProvider;
     } catch (error) {
       print("Erro ao buscar reservas: $error");
     } finally {
@@ -40,7 +41,7 @@ class _ReservasScreenState extends State<ReservasScreen> {
   void dispose() {
     final reservaProvider =
         Provider.of<ReservaProvider>(context, listen: false);
-    reservaProvider.stopPolling();
+    reservaProvider;
     super.dispose();
   }
 

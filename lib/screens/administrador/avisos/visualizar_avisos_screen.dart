@@ -11,6 +11,7 @@ class VisualizarAvisosScreen extends StatefulWidget {
   const VisualizarAvisosScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _VisualizarAvisosScreenState createState() => _VisualizarAvisosScreenState();
 }
 
@@ -23,7 +24,6 @@ class _VisualizarAvisosScreenState extends State<VisualizarAvisosScreen> {
     super.initState();
     final avisoProvider = Provider.of<AvisoProvider>(context, listen: false);
     avisoProvider.fetchAvisos();
-    avisoProvider.startPolling();
 
     avisoProvider.addListener(_scrollToBottomIfNeeded);
   }
@@ -32,7 +32,6 @@ class _VisualizarAvisosScreenState extends State<VisualizarAvisosScreen> {
   void dispose() {
     final avisoProvider = Provider.of<AvisoProvider>(context, listen: false);
     avisoProvider.removeListener(_scrollToBottomIfNeeded);
-    avisoProvider.stopPolling();
     _scrollController.dispose();
     super.dispose();
   }

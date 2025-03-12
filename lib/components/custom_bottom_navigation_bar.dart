@@ -47,10 +47,6 @@ class CustomBottomNavigationBar extends StatelessWidget {
           icon: Icon(Icons.business),
           label: 'Condomínio',
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.message),
-          label: 'Conversas',
-        ),
       ],
     );
   }

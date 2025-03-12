@@ -38,12 +38,6 @@ class _CriarAssembleiaScreenState extends State<CriarAssembleiaScreen> {
       return;
     }
 
-    String formatTimeOfDay(TimeOfDay time) {
-      final now = DateTime.now();
-      final dateTime =
-          DateTime(now.year, now.month, now.day, time.hour, time.minute);
-      return '${dateTime.hour.toString().padLeft(2, '0')}:${dateTime.minute.toString().padLeft(2, '0')}';
-    }
 
     String determinarStatus(DateTime data, TimeOfDay horario) {
       DateTime agora = DateTime.now();
@@ -76,13 +70,16 @@ class _CriarAssembleiaScreenState extends State<CriarAssembleiaScreen> {
       await Provider.of<AssembleiaProvider>(context, listen: false)
           .adicionarAssembleia(assembleia);
 
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Assembleia criada com sucesso!'),
         ),
       );
+      // ignore: use_build_context_synchronously
       Navigator.pop(context);
     } catch (error) {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Erro ao criar a assembleia.'),

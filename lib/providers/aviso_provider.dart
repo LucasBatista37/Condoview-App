@@ -11,7 +11,6 @@ class AvisoProvider with ChangeNotifier {
   final String _baseUrl = dotenv.env['BASE_URL'] ?? 'http://10.0.1.3:5000';
 
   List<Aviso> _avisos = [];
-  Timer? _pollingTimer;
 
   final SecureStorageService _secureStorageService = SecureStorageService();
   final logger = Logger();
@@ -53,23 +52,6 @@ class AvisoProvider with ChangeNotifier {
       logger.e('Erro ao adicionar aviso', error: error, stackTrace: stacktrace);
       rethrow;
     }
-  }
-
-  void startPolling() {
-    _pollingTimer?.cancel();
-    _pollingTimer = Timer.periodic(const Duration(seconds: 3), (timer) {
-      fetchAvisos();
-    });
-  }
-
-  void stopPolling() {
-    _pollingTimer?.cancel();
-  }
-
-  @override
-  void dispose() {
-    _pollingTimer?.cancel();
-    super.dispose();
   }
 
   Future<void> fetchAvisos() async {
