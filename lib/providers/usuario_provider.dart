@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -55,13 +56,16 @@ class UsuarioProvider with ChangeNotifier {
     });
 
     try {
-      final response = await http.post(url, headers: _getHeaders(), body: body);
+      final response = await http.post(url,
+          headers: {"Content-Type": "application/json"}, body: body);
 
       if (response.statusCode == 201) {
         final data = jsonDecode(response.body);
         _token = data['token'];
-        await _saveTokenToSecureStorage(_token!);
-        await getCurrentUser();
+        _usuario = Usuario.fromJson(data);
+
+        await saveFcmTokenToBackend();
+
         notifyListeners();
       } else {
         throw Exception('Erro ao criar conta: ${response.body}');
@@ -71,18 +75,47 @@ class UsuarioProvider with ChangeNotifier {
     }
   }
 
+  Future<void> saveFcmTokenToBackend() async {
+    if (_usuario == null) return;
+
+    final fcmToken = await FirebaseMessaging.instance.getToken();
+    if (fcmToken == null) return;
+
+    final url = Uri.parse('$_baseUrl/api/users/save-fcm-token');
+    final body = jsonEncode({"userId": _usuario!.id, "fcmToken": fcmToken});
+
+    try {
+      final response = await http.post(
+        url,
+        headers: {"Content-Type": "application/json"},
+        body: body,
+      );
+
+      if (response.statusCode == 200) {
+        print("FCM Token atualizado com sucesso no backend!");
+      } else {
+        print("Erro ao salvar FCM Token: ${response.body}");
+      }
+    } catch (e) {
+      print("Erro ao conectar com o backend: $e");
+    }
+  }
+
   Future<void> login(String email, String senha) async {
     final url = Uri.parse('$_baseUrl/api/users/login');
     final body = jsonEncode({'email': email, 'senha': senha});
 
     try {
-      final response = await http.post(url, headers: _getHeaders(), body: body);
+      final response = await http.post(url,
+          headers: {"Content-Type": "application/json"}, body: body);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         final data = jsonDecode(response.body);
         _token = data['token'];
-        await _saveTokenToSecureStorage(_token!);
-        await getCurrentUser();
+        _usuario = Usuario.fromJson(data);
+
+        await saveFcmTokenToBackend();
+
         notifyListeners();
       } else {
         throw Exception('Erro ao autenticar: ${response.body}');

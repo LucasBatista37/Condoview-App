@@ -4,9 +4,6 @@ import 'package:condoview/providers/chat_provider.dart';
 import 'package:condoview/providers/usuario_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class ChatGeralScreen extends StatefulWidget {
   const ChatGeralScreen({super.key});
@@ -18,7 +15,6 @@ class ChatGeralScreen extends StatefulWidget {
 
 class _ChatGeralScreenState extends State<ChatGeralScreen> {
   final TextEditingController _messageController = TextEditingController();
-  final ImagePicker _picker = ImagePicker();
   File? _image;
   String? _fileName;
 
@@ -172,14 +168,6 @@ class _ChatGeralScreenState extends State<ChatGeralScreen> {
                 padding: const EdgeInsets.all(16.0),
                 child: Row(
                   children: [
-                    IconButton(
-                      icon: const Icon(Icons.camera_alt),
-                      onPressed: _pickImageFromCamera,
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.attach_file),
-                      onPressed: _pickFile,
-                    ),
                     Expanded(
                       child: TextField(
                         controller: _messageController,
@@ -249,39 +237,6 @@ class _ChatGeralScreenState extends State<ChatGeralScreen> {
         ],
       ),
     );
-  }
-
-  Future<void> _pickImageFromCamera() async {
-    final status = await Permission.camera.request();
-    if (status.isGranted) {
-      final pickedFile = await _picker.pickImage(source: ImageSource.camera);
-      if (pickedFile != null) {
-        setState(() {
-          _image = File(pickedFile.path);
-          _fileName = null;
-        });
-      }
-    } else {
-      // ignore: use_build_context_synchronously
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Permissão para acessar a câmera negada')),
-      );
-    }
-  }
-
-  Future<void> _pickFile() async {
-    final result = await FilePicker.platform.pickFiles();
-    if (result != null) {
-      setState(() {
-        _image = null;
-        _fileName = result.files.single.name;
-      });
-    } else {
-      // ignore: use_build_context_synchronously
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Nenhum arquivo selecionado')),
-      );
-    }
   }
 
   Future<void> _sendMessage(String userId, String userName) async {

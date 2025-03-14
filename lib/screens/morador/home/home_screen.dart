@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:http/http.dart' as http;
 import 'package:condoview/components/custom_bottom_navigation_bar.dart';
 import 'package:condoview/components/custom_drawer.dart';
 import 'package:condoview/components/admin_grid.dart';
@@ -22,18 +21,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-  }
-
-  Future<void> confirmEmail(String token) async {
-    final response = await http.get(
-      Uri.parse('https://backend-condoview.onrender.com/confirm/$token'),
-    );
-
-    if (response.statusCode == 200) {
-      print("E-mail confirmado com sucesso!");
-    } else {
-      print("Erro ao confirmar o e-mail: ${response.body}");
-    }
   }
 
   @override

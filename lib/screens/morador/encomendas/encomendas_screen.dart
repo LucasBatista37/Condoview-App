@@ -48,7 +48,19 @@ class _EncomendasScreenState extends State<EncomendasScreen> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 78, 20, 166),
         foregroundColor: Colors.white,
-        title: const Text('Encomendas'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        title: const Text(
+          'Encomendas',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
       ),
       body: Consumer<EncomendasProvider>(

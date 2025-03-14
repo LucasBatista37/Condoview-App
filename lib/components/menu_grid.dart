@@ -1,7 +1,6 @@
 import 'package:condoview/screens/morador/avisos/avisos_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:condoview/screens/morador/assembleias/assembleias_screen.dart';
-import 'package:condoview/screens/morador/depesas/expenses_screen.dart';
 import 'package:condoview/screens/morador/encomendas/encomendas_screen.dart';
 import 'package:condoview/screens/morador/manutencao/manutencao_screen.dart';
 import 'package:condoview/screens/morador/ocorrencia/ocorrencia_screen.dart';
@@ -37,8 +36,6 @@ class MenuGrid extends StatelessWidget {
         _buildMenuItem(Icons.create_rounded, 'Ocorrências',
             const OcorrenciaScreen(), context),
         _buildMenuItem(Icons.chat, 'Chat Geral', const ChatGeralScreen(), context),
-        _buildMenuItem(Icons.account_balance_wallet, 'Despesas',
-            const DespesasScreen(), context),
       ],
     );
   }

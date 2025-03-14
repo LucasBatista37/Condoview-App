@@ -27,7 +27,7 @@ class EncomendaDetalhesScreen extends StatelessWidget {
       imagePath: encomenda.imagePath,
       status: novoStatus,
       usuarioId: encomenda.usuarioId,
-      usuarioNome: encomenda.usuarioNome, 
+      usuarioNome: encomenda.usuarioNome,
     );
 
     try {
@@ -84,7 +84,19 @@ class EncomendaDetalhesScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 78, 20, 166),
         foregroundColor: Colors.white,
-        title: const Text('Detalhes da Encomenda'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        title: const Text(
+          'Detalhes da Encomenda',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
       ),
       body: Padding(

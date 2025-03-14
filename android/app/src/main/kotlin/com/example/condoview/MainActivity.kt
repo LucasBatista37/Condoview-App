@@ -1,4 +1,4 @@
-package com.example.condoview
+package com.beyond.condoview
 
 import io.flutter.embedding.android.FlutterActivity
 

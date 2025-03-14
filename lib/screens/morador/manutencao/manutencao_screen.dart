@@ -75,11 +75,6 @@ class _ManutencaoScreenState extends State<ManutencaoScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Manutenções aprovadas',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 16),
                   Expanded(
                     child: manutencaoProvider.manutencoes.isEmpty
                         ? const CustomEmpty(

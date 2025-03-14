@@ -58,7 +58,7 @@ class AdminGrid extends StatelessWidget {
             _buildAdminItem(
               Icons.qr_code_scanner,
               'Entrada',
-              QRCodeScannerScreen(),
+              const QRCodeScannerScreen(),
               context,
             ),
           ],

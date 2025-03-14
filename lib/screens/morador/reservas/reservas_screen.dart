@@ -73,11 +73,6 @@ class _ReservasScreenState extends State<ReservasScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Áreas Disponíveis para Reserva',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 16),
                   Expanded(
                     child: Consumer<ReservaProvider>(
                       builder: (context, reservaProvider, _) {

@@ -1,4 +1,3 @@
-import 'package:condoview/screens/administrador/createCondo/create_condo_screen.dart';
 import 'package:condoview/screens/morador/login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -230,29 +229,6 @@ class _SignupScreenState extends State<SignupScreen> {
                             style: TextStyle(color: Colors.white),
                           ),
                         ),
-                  const SizedBox(height: 16),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const CreateCondoScreen(),
-                        ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey[300],
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 50, vertical: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                    ),
-                    child: const Text(
-                      'Criar Condomínio',
-                      style: TextStyle(color: Color.fromARGB(255, 78, 20, 166)),
-                    ),
-                  ),
                   const SizedBox(height: 32),
                   const Text.rich(
                     TextSpan(
